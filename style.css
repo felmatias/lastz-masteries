@@ -1,0 +1,380 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(#2b4f86,#183969);
+    background-size: 32px 32px, 32px 32px, cover;
+    min-height: 100vh;
+}
+
+.topbar {
+    min-height: 70px;
+    background: #12274a;
+    border-bottom: 2px solid #4f7fc5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.points {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.points input {
+    width: 80px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 2px solid #8fc7ff;
+    background: #0f2344;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.separator {
+    opacity: .6;
+}
+
+.buttons button,
+.treeChoice button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #4fa4ff;
+    color: white;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.buttons button:hover,
+.treeChoice button:hover {
+    background: #77bcff;
+    transform: translateY(-1px);
+}
+
+.treeChoice {
+    margin: 30px auto 0;
+    max-width: 700px;
+    background: rgba(0,0,0,.25);
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+}
+
+.treeChoice h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.treeChoiceButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.treesWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    padding: 35px;
+    align-items: start;
+}
+
+.treePanel {
+    background: rgba(0,0,0,.18);
+    border: 2px solid rgba(255,255,255,.18);
+    border-radius: 18px;
+    padding: 22px;
+    min-width: 0;
+    transition: .2s;
+}
+
+.treePanel h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 black;
+}
+
+.treePanel.lockedTree {
+    filter: grayscale(1);
+    opacity: .45;
+}
+
+.treePanel.primaryTree {
+    border-color: #5dff72;
+    box-shadow: 0 0 18px rgba(80,255,100,.35);
+}
+
+.treePanel.secondaryTree {
+    border-color: #ffd35a;
+}
+
+.talentTree {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.tier {
+    display: grid;
+    grid-template-columns: 95px 1fr;
+    gap: 24px;
+    align-items: center;
+    position: relative;
+}
+
+.tier::before {
+    content: "";
+    position: absolute;
+    left: 41px;
+    top: -25px;
+    bottom: -25px;
+    width: 10px;
+    background: #4caf32;
+    border-radius: 8px;
+}
+
+.tierLevel {
+    position: relative;
+    z-index: 5;
+    width: 86px;
+    height: 48px;
+    background: linear-gradient(#9bd4ff,#6ca8df);
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #d5ecff;
+    border-radius: 6px;
+    text-shadow: 2px 2px 0 black;
+}
+
+.tierTalents {
+    display: flex;
+    justify-content: space-around;
+    gap: 22px;
+}
+
+.talent {
+    width: 110px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    background: transparent;
+}
+
+.talentBorder {
+    width: 96px;
+    height: 96px;
+    margin: auto;
+    position: relative;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.talent:hover .talentIcon {
+    transform: scale(1.08);
+    filter:
+        drop-shadow(0 0 10px rgba(255,215,0,.8));
+}
+
+.talentIcon {
+    display: block;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(0,0,0,.5));
+    transition: transform .15s, filter .15s;
+}
+
+.upgradeArrow {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: #3cff35;
+    font-size: 26px;
+    font-weight: bold;
+    text-shadow: 0 0 8px #1dff00;
+}
+
+.talentPoints {
+    margin-top: 2px;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+
+    text-shadow:
+        -2px -2px 0 black,
+         2px -2px 0 black,
+        -2px  2px 0 black,
+         2px  2px 0 black;
+}
+
+.talent.locked .talentIcon {
+    filter:
+        grayscale(1)
+        brightness(.45);
+}
+
+.talent.locked .upgradeArrow {
+    display: none;
+}
+
+.talent.unlocked .talentIcon {
+    filter:
+        drop-shadow(0 0 8px rgba(100,255,100,.7));
+}
+
+.talent.maxed .talentIcon {
+    filter:
+        drop-shadow(0 0 12px #00ff55);
+}
+
+.talent.selected .talentIcon {
+    filter:
+        drop-shadow(0 0 10px rgba(255,255,120,.9));
+}
+
+.tooltip {
+    position: fixed;
+    background: #2b1d12;
+    border: 3px solid gold;
+    border-radius: 10px;
+    padding: 15px;
+    width: 270px;
+    pointer-events: none;
+    z-index: 999;
+    box-shadow: 0 0 15px rgba(0,0,0,.7);
+}
+
+.tooltip-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffd54a;
+    margin-bottom: 10px;
+}
+
+.tooltip-description {
+    line-height: 1.5;
+}
+
+@media (max-width: 1200px) {
+    .treesWrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .topbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .title {
+        text-align: center;
+        white-space: normal;
+    }
+
+    .points {
+        justify-content: center;
+    }
+
+    .buttons {
+        text-align: center;
+    }
+
+    .treeChoiceButtons {
+        flex-direction: column;
+    }
+
+    .treesWrapper {
+        padding: 20px;
+    }
+
+    .tier {
+        grid-template-columns: 1fr;
+    }
+
+    .tier::before {
+        display: none;
+    }
+
+    .tierLevel {
+        margin: auto;
+    }
+
+    .tierTalents {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.points select{
+
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    border:2px solid #8fc7ff;
+
+    background:#0f2344;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.talent.unlocked .talentBorder {
+    border-color: #7cff7c;
+    box-shadow:
+        0 0 12px rgba(100, 255, 100, .55),
+        inset 0 0 12px rgba(255,255,255,.12);
+}
+
+.talent.unlocked .upgradeArrow {
+    display: block;
+}
+
+.talent.allocatable .talentBorder {
+    border-color: #7cff7c;
+    box-shadow:
+        0 0 16px rgba(100, 255, 100, .75),
+        inset 0 0 12px rgba(255,255,255,.15);
+}
