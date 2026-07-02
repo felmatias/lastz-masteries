@@ -1,0 +1,19 @@
+{
+    "defaultTree": "gathering",
+
+    "trees": [
+
+        {
+            "id": "gathering",
+            "name": "Gathering",
+            "file": "support.json"
+        },
+
+        {
+            "id": "combat",
+            "name": "Combat",
+            "file": "combat.json"
+        }
+
+    ]
+}
