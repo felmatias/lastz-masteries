@@ -146,8 +146,8 @@
                 },
                 {
                     "id": "S5-2",
-                    "name": "Each level-up of the Bio Greenhouse grants ### additional points of Resistance",
-                    "description": "Example talent.",
+                    "name": "Resistance Boost",
+                    "description": "Each level-up of the Bio Greenhouse grants ### additional points of Resistance",
                     "maxPoints": 5,
                     "points": 0,
                     "levels": {
